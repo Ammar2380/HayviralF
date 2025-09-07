@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PlaySquare, BarChart3, PenTool } from "lucide-react";
-import "./app.css";
+import "./App.css";
 import Footer from './components/Footer';
 import Logo from './components/Logo'
 import Navbar from './components/Navbar'
