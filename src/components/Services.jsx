@@ -1,206 +1,253 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { PenTool, Search, Code2, Share2 } from "lucide-react";
-import img from './img.jpg'
+import img1 from "./SMM.jpg";
+import img2 from "./SEO.jpg";
+import img3 from "./branding.jpg";
+import img4 from "./web dev.jpg";
+import img5 from "./calendly.png";
+import bg from "./Services bg.png";
+import { section } from "framer-motion/m";
+
+// Data for all services
 const servicesData = {
-  branding: {
-    title: "Branding",
-    icon: PenTool,
-    tabs: ["Identity", "Logo", "Messaging", "Visuals"],
-    content: [
+  development: {
+    title: "Web Development",
+    tabs: [
       {
-        title: "Complete Brand Identity",
-        desc: "Your brand is more than a logo—it’s how people remember you. We craft consistent brand systems that build trust and recognition.",
-        image: "https://source.unsplash.com/800x500/?brand,identity",
+        name: "Wordpress",
+        heading: "Powerful CMS for Every Business",
+        desc: "Build and manage dynamic websites with WordPress. Flexible, customizable, and scalable solutions for blogs, portfolios, and businesses.",
+        image: img4,
       },
       {
-        title: "Logo Design",
-        desc: "Memorable, modern, and meaningful logos designed to make your business stand out instantly.",
-        image: "https://source.unsplash.com/800x500/?logo,design",
+        name: "Shopify",
+        heading: "Curated Delights for Discerning Shoppers",
+        desc: "Empower your eCommerce business with premium Shopify solutions. Well-customized, high-performing Shopify stores ensure seamless customer experiences and maximum conversions.",
+        image: "https://source.unsplash.com/800x500/?shopify,ecommerce",
       },
       {
-        title: "Brand Messaging",
-        desc: "From tagline to tone of voice—we shape how your audience hears and feels your story.",
-        image: "https://source.unsplash.com/800x500/?marketing,voice",
+        name: "Squarespace",
+        heading: "Creative Websites Made Simple",
+        desc: "Design elegant and responsive websites effortlessly with Squarespace. Perfect for creatives, businesses, and online stores.",
+        image: "https://source.unsplash.com/800x500/?squarespace,design",
       },
       {
-        title: "Visual Language",
-        desc: "Colors, typography, and imagery that define your unique style and spark recognition.",
-        image: "https://source.unsplash.com/800x500/?visual,design",
+        name: "Wix",
+        heading: "Easy and Intuitive Website Building",
+        desc: "Create beautiful websites with drag-and-drop ease using Wix. Ideal for individuals and small businesses looking to get online fast.",
+        image: "https://source.unsplash.com/800x500/?wix,web",
       },
     ],
   },
   seo: {
-    title: "Search Engine Optimization (SEO)",
-    icon: Search,
-    tabs: ["Keyword Research", "On-Page SEO", "Technical SEO", "Content Strategy"],
-    content: [
+    title: "SEO",
+    tabs: [
       {
-        title: "Keyword Research",
-        desc: "Identify high-value keywords that your audience is already searching for.",
-        image: "https://source.unsplash.com/800x500/?seo,keywords",
+        name: "Keyword Research",
+        heading: "Target the Right Audience",
+        desc: "Identify high-value keywords your customers are already searching for, ensuring maximum visibility and targeted traffic.",
+        image: img2,
       },
       {
-        title: "On-Page SEO",
-        desc: "Optimize your site structure, titles, and content for maximum visibility.",
+        name: "On-Page SEO",
+        heading: "Optimize Every Page",
+        desc: "Structure your content, titles, and meta descriptions to boost rankings and user engagement.",
         image: "https://source.unsplash.com/800x500/?seo,onpage",
       },
       {
-        title: "Technical SEO",
-        desc: "Improve website speed, mobile performance, and crawlability to boost rankings.",
+        name: "Technical SEO",
+        heading: "Build for Search Engines",
+        desc: "Improve website speed, mobile-friendliness, and crawlability to enhance search performance.",
         image: "https://source.unsplash.com/800x500/?seo,technical",
       },
       {
-        title: "Content Strategy",
-        desc: "Plan and publish SEO-rich content that drives traffic and authority.",
+        name: "Content Strategy",
+        heading: "Content That Ranks",
+        desc: "Plan and publish SEO-rich content to drive authority, traffic, and conversions.",
         image: "https://source.unsplash.com/800x500/?seo,content",
       },
     ],
   },
-  web: {
-    title: "Website Design & Development",
-    icon: Code2,
-    tabs: ["Design", "Development", "E-Commerce", "Optimization"],
-    content: [
+  branding: {
+    title: "Branding",
+    tabs: [
       {
-        title: "Modern UI/UX Design",
-        desc: "Clean, creative, and user-friendly website designs that make lasting first impressions.",
-        image: "https://source.unsplash.com/800x500/?website,design",
+        name: "Identity",
+        heading: "Build a Lasting Brand Identity",
+        desc: "We craft cohesive brand systems that define how your audience remembers and trusts you.",
+        image: img3,
       },
       {
-        title: "Custom Development",
-        desc: "We build fast, scalable, and mobile-friendly websites tailored to your business.",
-        image: "https://source.unsplash.com/800x500/?web,development",
+        name: "Logo",
+        heading: "Logos That Stand Out",
+        desc: "Memorable, modern, and meaningful logos designed to instantly connect with your audience.",
+        image: "https://source.unsplash.com/800x500/?logo,design",
       },
       {
-        title: "E-Commerce Stores",
-        desc: "From Shopify to custom builds, we create online stores that convert visitors into buyers.",
-        image: "https://source.unsplash.com/800x500/?ecommerce,website",
+        name: "Messaging",
+        heading: "Shape Your Voice",
+        desc: "From tagline to tone, we refine how your story resonates with your audience.",
+        image: "https://source.unsplash.com/800x500/?brand,messaging",
       },
       {
-        title: "Performance Optimization",
-        desc: "Speed, security, and conversion-focused enhancements that drive results.",
-        image: "https://source.unsplash.com/800x500/?web,speed",
+        name: "Visuals",
+        heading: "Define Your Style",
+        desc: "Typography, colors, and imagery that set you apart and reinforce recognition.",
+        image: "https://source.unsplash.com/800x500/?visual,design",
       },
     ],
   },
   social: {
     title: "Social Media Marketing",
-    icon: Share2,
-    tabs: ["Content Creation", "Paid Ads", "Community Growth", "Analytics"],
-    content: [
+    tabs: [
       {
-        title: "Content Creation",
-        desc: "Engaging graphics, reels, and posts designed to capture attention and spark engagement.",
-        image: "https://source.unsplash.com/800x500/?social,content",
+        name: "Content Creation",
+        heading: "Engaging Content that Converts",
+        desc: "We design posts, reels, and graphics that attract attention and spark engagement.",
+        image: img1,
       },
       {
-        title: "Paid Campaigns",
-        desc: "Targeted ad campaigns on Instagram, Facebook, and LinkedIn to maximize reach and ROI.",
+        name: "Paid Ads",
+        heading: "Maximize Your ROI",
+        desc: "Run targeted ad campaigns on Facebook, Instagram, and LinkedIn to reach the right audience.",
         image: "https://source.unsplash.com/800x500/?ads,campaign",
       },
       {
-        title: "Community Growth",
-        desc: "Grow loyal followers through authentic engagement and brand storytelling.",
+        name: "Community Growth",
+        heading: "Grow Loyal Communities",
+        desc: "Authentic engagement strategies to build strong and lasting relationships with followers.",
         image: "https://source.unsplash.com/800x500/?community,growth",
       },
       {
-        title: "Analytics & Insights",
-        desc: "Track performance, analyze trends, and refine campaigns with real data.",
+        name: "Analytics",
+        heading: "Data-Driven Strategies",
+        desc: "Track, analyze, and refine campaigns with actionable insights.",
         image: "https://source.unsplash.com/800x500/?analytics,social",
       },
     ],
   },
 };
 
-export default function Services() {
-  const [activeService, setActiveService] = useState("branding");
-  const [activeTab, setActiveTab] = useState(0);
+export default function ServicesPage() {
+  // store tab state for each service separately
+  const [activeTabs, setActiveTabs] = useState({
+    development: 0,
+    seo: 0,
+    branding: 0,
+    social: 0,
+  });
 
-  const service = servicesData[activeService];
-  const activeContent = service.content[activeTab];
+  const handleTabClick = (serviceKey, index) => {
+    setActiveTabs((prev) => ({ ...prev, [serviceKey]: index }));
+  };
 
   return (
-    <section className="relative px-6 md:px-20 py-24 bg-[#00303C] text-white">
-      {/* Header */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#0ce40c]">
-          Digital Services That Drive Growth
-        </h2>
-        <p className="text-[#ffff] max-w-2xl mx-auto mt-4">
-          From first impressions to long-term engagement, we cover everything your business needs to succeed online.
-        </p>
-      </div>
+  <section
+  style={{
+    backgroundImage: `url(${bg})`,
+    backgroundSize: "cover",       // ✅ fill whole section
+    backgroundPosition: "center",  // ✅ keep centered
+    // backgroundRepeat: "no-repeat", // ✅ no tiling
+  }}
+  className="w-full text-white scroll-m-6 " id="services"
+>
 
-      <div className="grid md:grid-cols-2 gap-14 items-start">
-        {/* Left Side - Services & Tabs */}
-        <div>
-          <div className="flex flex-col gap-4">
-            {Object.keys(servicesData).map((key) => {
-              const Icon = servicesData[key].icon;
-              return (
-                <button
-                  key={key}
-                  onClick={() => {
-                    setActiveService(key);
-                    setActiveTab(0);
-                  }}
-                  className={`flex items-center gap-4 px-6 py-5 rounded-xl text-left transition-all font-semibold text-lg ${
-                    activeService === key
-                      ? "bg-[#0ce40c] text-white shadow-lg scale-[1.02]"
-                      : "bg-green-100 border border-green-200 text-green-700 hover:bg-green-200"
-                  }`}
-                >
-                  <Icon className="w-6 h-6" />
-                  {servicesData[key].title}
-                </button>
-              );
-            })}
-          </div>
 
-          {/* Tabs */}
-          <div className="flex flex-wrap gap-3 mt-6">
-            {service.tabs.map((tab, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveTab(index)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  activeTab === index
-                    ? "bg-[#0ce40c] text-white shadow"
-                    : "bg-green-100 text-green-700 hover:bg-green-200"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
+  
+  <div className="relative">
+    {/* 🔥 Title/Intro */}
+    <div className="text-center pt-14 ">
+      <div className="text-center flex justify-center items-center  ">
+
+        <h1 className="border-1 border-[#C6FD07] font-semibold item-center text-center text-[#C6FD07] w-35 rounded-2xl mb-4">Services</h1>
         </div>
+      <h2 className="text-2xl px-6 sm:text-3xl md:text-4xl font-bold font-outfit leading-tight">
+        Helping Small Businesses Go Big Online
+      </h2>
+      <p className="mt-1 text-base sm:text-lg md:text-xl opacity-70 font-outfit text-[#c2c2c2] max-w-2xl mx-auto leading-tight font-extralight">
+        We’re your creative partner in building an online presence that
+        doesn’t just look good it grows your business.
+      </p>
+    </div>
 
-        
-        <motion.div
-          key={activeContent.title}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="bg-[#0ce40c] border border-green-200 rounded-2xl overflow-hidden shadow-lg"
-        >
-         <img
-  src={img}  // use the imported image
-  alt={activeContent.title}
-  className="w-126.5 m-1.5 rounded-xl h-69 object-cover border-b text-[#00303C] border-green-700"
-/>
+    {/* 🔥 Services Sections */}
+    <div className=" px-6 md:px-20">
+      {Object.entries(servicesData).map(([key, service]) => {
+        const activeContent = service.tabs[activeTabs[key]];
+        return (
+          <section
+            key={key}
+            className="scroll-mt-55 relative pt-10 text-white"
+          >
+            <div className="grid md:grid-cols-2 items-center bg-[#00303C] border border-[#C6FD07] rounded-2xl p-3 ">
+              {/* Left Side */}
+              <div className="px-6">
+                <h2 className="text-4xl md:text-5xl font-bold mb-5">
+                  {service.title}
+                </h2>
 
-          <div className="p-8">
-            <h3 className="text-2xl font-bold mb-3 text-[#00303C]">
-              {activeContent.title}
-            </h3>
-            <p className="text-[#00303C] font-bold mb-6">{activeContent.desc}</p>
-            <button className="px-6 py-3 bg-green-700 hover:bg-green-600   font-semibold rounded-lg shadow transition-all duration-300">
-              Learn More →
-            </button>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+                {/* Tabs */}
+                <div className="flex flex-wrap gap-3 mb-5 text-xs">
+                  {service.tabs.map((tab, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleTabClick(key, index)}
+                      className={`md:px-6 px-4 md:py-2 py-1 rounded-full font-medium transition-all ${
+                        activeTabs[key] === index
+                          ? "bg-[#C6FD07] text-[#00303C]"
+                          : "bg-purple-200 text-[#00303C] hover:bg-purple-300"
+                      }`}
+                    >
+                      {tab.name}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Heading & Description */}
+                <motion.div
+                  key={activeContent.heading}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <h3 className="text-xl md:text-2xl font-semibold md:mb-2 mb-3 leading-5  ">
+                    {activeContent.heading}
+                  </h3>
+                  <p className="text-gray-200 text-base  leading-tight md:mb-0 mb-4">
+                    {activeContent.desc}
+                  </p>
+                </motion.div>
+              </div>
+
+              {/* Right Side */}
+              <motion.div
+                key={activeContent.image}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="rounded-2xl overflow-hidden shadow-lg"
+              >
+                <img
+                  src={activeContent.image}
+                  alt={activeContent.name}
+                  className="w-full h-[300px] object-cover"
+                />
+              </motion.div>
+            </div>
+          </section>
+        );
+      })}
+    </div>
+
+    {/* 🔥 Button Section */}
+    <div className="p-8 flex justify-center items-center">
+      <button className="border border-[#00303C] bg-[#C6FD07] px-5 py-2 rounded-full font-semibold flex flex-row justify-center items-center gap-3 shadow-lg text-[#00303C] hover:scale-[1.02] transition">
+        <img className="h-5" src={img5} alt="" />
+        Book a Free Discovery Call
+      </button>
+    </div>
+  </div>
+</section>
+
   );
 }

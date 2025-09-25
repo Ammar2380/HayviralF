@@ -1,53 +1,97 @@
-import SectionHeading from "./SectionHeading";
-import { DollarSign, CheckCircle, Users, Rocket } from "lucide-react";
-
-const reasons = [
-  {
-    icon: DollarSign,
-    title: "Affordable & Tailored",
-    desc: "Customized packages built for small businesses—no overpriced fluff, just value.",
-  },
-  {
-    icon: CheckCircle,
-    title: "Clear & Simple",
-    desc: "No confusing jargon—just straightforward strategies and measurable results.",
-  },
-  {
-    icon: Users,
-    title: "Creative Partners",
-    desc: "We treat your business like our own, bringing passion and fresh ideas to every project.",
-  },
-  {
-    icon: Rocket,
-    title: "Proven Expertise",
-    desc: "From SEO to branding, development, and marketing—we’ve got the skills that matter.",
-  },
-];
+import img from './why.png'
+import tick from './tick.png'
+import img2 from './whyimg.png'
 
 export default function WhyChooseUs() {
   return (
-    <section id="whychooseus" className="px-6 md:px-20 py-16 bg-[#F9F9F9]">
-      <SectionHeading
-        title="Big-Agency Skills. Small-Business Care."
-        subtitle="We’re not just another digital agency—we’re a partner who gets it."
-      />
 
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-        {reasons.map((reason, i) => (
-          <div
-            key={i}
-            className="flex items-start gap-4 bg-white rounded-xl border border-gray-200 shadow-sm p-6 hover:shadow-md transition"
-          >
-            <reason.icon className="w-8 h-8 text-green-600 flex-shrink-0" />
-            <div>
-              <h3 className="font-semibold text-gray-900 text-lg">
-                {reason.title}
-              </h3>
-              <p className="text-gray-600 mt-1">{reason.desc}</p>
-            </div>
-          </div>
-        ))}
+
+  
+    <section className="bg-[#00303C] text-white py-40 md:py-16 px-6 md:px-67 flex justify-center items-center flex-col " >
+   
+      <div className="text-center  ">
+        <span className="inline-block px-4 py-1 font-outfit border border-[#C6FF00] text-[#C6FF00] rounded-full font-semibold  font-outfit   ">
+          Why Choose Us
+        </span>
+        <h2 className="text-3xl md:text-4xl font-bold mt-6">
+          Big-Agency Skills. Small-Business Care.
+        </h2>
+        <p className="text-gray-300 mt-3">
+          We’re not just another digital agency we’re a partner who gets it.
+        </p>
       </div>
+
+     <div className='  gap-10 w-80 h-80  min-sm:hidden  '
+     style={{
+                backgroundImage: `url(${img2})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}>
+</div>
+      <div className="space-y-2 h-50 px-11 w-screen bg-[#00303C] min-sm:hidden ">
+          <div className="flex items-start gap-3 justify-center ">
+            <span className="flex justify-center items-center h-13 "><img src={tick} alt="" /></span>
+            <p className='leading-tight'>A creative team that treats your business like our own</p>
+          </div>
+          <div className="flex items-start gap-3 ">
+ <span className=" flex justify-center items-center h-17 "><img src={tick} alt="" className='h-8 w-16' /></span>
+            <p  className='leading-tight'  >
+              Proven expertise across SEO, development, branding, and marketing
+            </p>
+          </div>
+           <div className="space-y-5">
+          <div className="flex items-start gap-3">
+            <span className="  flex justify-center items-center h-11.5  "><img src={tick} className='h-9 w-16' alt="" /></span>
+            <p className='leading-tight'  >Affordable, customized packages tailored for small businesses</p>
+          </div>
+          <div className="flex items-start gap-3">
+ <span className="  flex justify-center items-center h-11.5 "><img src={tick} className='h-9 w-15' alt="" /></span>
+            <p className='leading-tight'  >
+              No confusing jargon just clear strategies and real results
+            </p>
+          </div>
+        </div>
+        </div>          
+
+        
+     
+     
+      <div className="grid md:grid-cols-3  gap-10 w-230 h-80 items-center max-sm:hidden " style={{
+                backgroundImage: `url(${img})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}>
+       
+       
+        <div className="space-y-6 ">
+          <div className="flex items-start gap-3 justify-center ">
+            <span className="flex justify-center items-center h-13 "><img src={tick} alt="" /></span>
+            <p>A creative team that treats your business like our own</p>
+          </div>
+          <div className="flex items-start gap-3 ">
+ <span className=" flex justify-center items-center h-17 "><img src={tick} alt="" className='h-8 w-16' /></span>
+            <p>
+              Proven expertise across SEO, development, branding, and marketing
+            </p>
+          </div>
+        </div>
+
+     
+        <div className="space-y-12 relative left-87">
+          <div className="flex items-start gap-3">
+            <span className="  flex justify-center items-center h-11.5  "><img src={tick} className='h-9 w-16' alt="" /></span>
+            <p>Affordable, customized packages tailored for small businesses</p>
+          </div>
+          <div className="flex items-start gap-3">
+ <span className="  flex justify-center items-center h-11.5 "><img src={tick} className='h-9 w-15' alt="" /></span>
+            <p>
+              No confusing jargon just clear strategies and real results
+            </p>
+          </div>
+        </div>
+      
+      </div>
+
     </section>
   );
 }

@@ -1,56 +1,90 @@
 import SectionHeading from "./SectionHeading";
 import { Search, FileText, Brush, TrendingUp } from "lucide-react";
+import img from './sci.png'
+import img1 from './sci1.png'
+import img2 from './sci3.png'
+import img3 from './sci4.png'
+import vector from './Vector.png'
+import vector1 from './Vector (2).png'
 
 export default function HowWeWork() {
-  const steps = [
-    {
-      icon: Search,
-      title: "Discover",
-      text: "We learn about your business, goals, and audience.",
-    },
-    {
-      icon: FileText,
-      title: "Plan",
-      text: "We craft a digital strategy tailored to your needs.",
-    },
-    {
-      icon: Brush,
-      title: "Create",
-      text: "Our team designs, builds, and launches your campaigns.",
-    },
-    {
-      icon: TrendingUp,
-      title: "Grow",
-      text: "We track, optimize, and scale what works.",
-    },
-  ];
+
 
   return (
-    <section id="howwework" className="px-6 md:px-20 py-16 bg-white">
-      <SectionHeading
-        title="A Simple Process for Big Results"
-        subtitle="We keep things clear, transparent, and focused on your success."
-      />
+    <section id="howwework" className="px-6  md:px-10 h-220 md:h-150 py-10 bg-[#00303C] flex flex-col justify-center items-center  ">
+    <div className="w-full h-30  flex justify-center items-center flex-col space-y-3">
+          <span className="inline-block px-4 py-1 font-outfit border border-[#C6FF00] text-[#C6FF00] rounded-full font-semibold  font-outfit   ">
+         How We Work
+        </span>
 
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {steps.map((step, i) => (
-          <div
-            key={i}
-            className="relative bg-[#F9F9F9] rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition"
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <step.icon className="w-8 h-8 text-green-600" />
-              <span className="text-xl font-bold text-gray-800">
-                {i + 1}.
-              </span>
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900">
-              {step.title}
-            </h3>
-            <p className="text-gray-600 mt-2">{step.text}</p>
-          </div>
-        ))}
+        <div className="space-y-2 " >
+          <h2 className="text-4xl font-bold leading-tight text-[#ffff] text-center">A Simple Process for Big Results</h2>
+          <p className="text-center font-extralight leading-tight opacity-70 text-[#ffff]">
+            We keep things clear, transparent, and focused on your success.
+          </p>
+        </div>
+      <div>
+
       </div>
-    </section>
+    
+
+    </div>
+  
+  <div className=" h-fit w-auto md:w-250 bg-[#00303C] flex  items-center flex-col md:flex-row mt-10">
+
+    <div className="flex flex-row md:flex-col md:gap-0 gap-8 items-center ">
+      <span className=" "><img className="  m-2 h-15 md:h-30" src={img} alt=""  /></span>
+      
+      <span className=" w-auto md:w-30 h-30 md:h-40 bg-[#00303C]  md:items-center md:justify-center  m-2 flex flex-col">
+        <h1 className="font-bold text-[#C6FD07] text-5xl relative md:right-8">01</h1>
+        <h3 className="font-bold text-[#ffff] relative md:right-3.5 text-2xl">Discover</h3>
+        <p className=" text-[#ffff] leading-tight text-sm font-extralight   ">We learn about your business, goals, and audience.</p>
+      </span>
+    </div>
+    <div className="flex flex-col ">
+     <img src={vector} alt="" className="max-sm:hidden p-2" />
+         </div>
+
+    <div className="flex flex-row md:flex-col ">
+    <span className="w-auto md:w-30 md:h-40 bg-[#00303C]  md:items-center md:justify-center  m-2 flex flex-col">
+        <h1 className="font-bold text-[#C6FD07] text-5xl relative md:right-8">02</h1>
+        <h3 className="font-bold text-[#ffff] relative md:right-8.5 text-2xl">Plan</h3>
+        <p className=" text-[#ffff] leading-tight text-sm font-extralight md:w-auto w-60 ">We craft a digital strategy tailored to your needs.</p>
+      </span>
+        <span className="h-full flex justify-center items-center"><img className=" m-2 h-15 md:h-30  " src={img1} alt=""  /></span>
+    </div>
+    <div className="flex flex-col">
+      <img src={vector1} alt="" className="max-sm:hidden p-2" />
+    </div>
+
+
+    <div className="flex flex-row md:flex-col md:gap-0 gap-8 items-center "> 
+      <span className=""><img className="  m-2 h-15 md:h-30" src={img2} alt=""  /></span>
+  <span className=" w-auto md:w-30 h-30 md:h-40 bg-[#00303C]  md:items-center md:justify-center  m-2 flex flex-col">
+        <h1 className="font-bold text-[#C6FD07] text-5xl relative md:right-9">03</h1>
+        <h3 className="font-bold text-[#ffff] relative md:right-6.5 text-2xl">Create</h3>
+        <p className=" text-[#ffff] leading-tight text-sm font-extralight ">Our team designs, builds, and launches your campaigns.</p>
+      </span>
+    </div>
+    <div className="flex flex-col    ">
+<img src={vector} alt="" className="max-sm:hidden p-2" />
+    </div>
+
+
+    <div className="flex flex-row md:flex-col ">
+   <span className=" w-auto md:w-30 md:h-40 bg-[#00303C]  md:items-center md:justify-center  m-2 flex flex-col">
+        <h1 className="font-bold text-[#C6FD07] text-5xl relative md:right-10">04</h1>
+        <h3 className="font-bold text-[#ffff] relative md:right-8 text-2xl">Grow</h3>
+        <p className=" text-[#ffff] leading-tight text-sm font-extralight ">We track, optimize, and scale what works.</p>
+      </span>
+       <span className="h-full flex justify-center items-center"><img className="  m-2 h-15 md:h-30" src={img3} alt=""  /></span>
+    </div>
+
+  </div>
+
+
+    
+
+       </section>
   );
 }
