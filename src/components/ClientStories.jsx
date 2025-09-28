@@ -13,7 +13,7 @@ const clients = [
     video: "https://www.w3schools.com/html/mov_bbb.mp4",
   },
   {
-  
+     name: "Ayesha Khan",
     role: "CEO, TechNova",
     video: "https://www.w3schools.com/html/movie.mp4",
   },
