@@ -18,7 +18,7 @@ const clients = [
     video: "https://www.w3schools.com/html/movie.mp4",
   },
   {
-    name: "Sarah Malik",
+     name: "Ayesha Khan",,
     role: "Marketing Manager, Urban Wear",
     video: "https://www.w3schools.com/html/mov_bbb.mp4",
   },
