@@ -40,17 +40,22 @@ export default function Contact() {
     <section id="contact" className="scroll-mt-10 px-6 md:px-20 py-16 bg-[#00303C]  ">
       <div className="flex-col md:flex md:flex-row justify-between max-full text-[#ffff] " >
        
-        <div className="mt-10 space-y-2">
-          <h1 className="font-bold text-3xl text-center md:text-start">Ready to Grow Your Business Online?</h1>
-          <p className="text-sm opacity-70 font-extralight text-center md:text-start"> Let’s build a digital strategy that works for you.</p>
-        </div>
+     <div className="mt-10 w-full max-w-3xl mx-auto space-y-2 px-4 md:px-0">
+  <h1 className="font-bold text-3xl text-center md:text-left">
+    Ready to Grow Your Business Online?
+  </h1>
+  <p className="text-sm opacity-70 font-extralight text-center md:text-left">
+    Let’s build a digital strategy that works for you.
+  </p>
+</div>
 
-       <div className="bg-[#00303C] p-8 items-center justify-center flex ">
-               <button className="border border-[#00303C] bg-[#C6FD07] px-5 py-2 rounded-full font-semibold flex flex-row justify-center items-center gap-3 shadow-lg text-sm text-[#00303C] hover:scale-[1.02] transition">
-                 <img className="h-5" src={img5} alt="" />
-                 Book a Free Discovery Call
-               </button>
-             </div>
+<div className="w-full flex justify-center mt-4">
+  <button className="border border-[#00303C] bg-[#C6FD07] h-10 p-5 md:py-2 rounded-full font-semibold flex flex-row items-center gap-2 md:gap-3 shadow-md text-sm md:text-base text-[#00303C] hover:scale-[1.02] transition mt-5">
+    <img className="h-4 md:h-5" src={img5} alt="" />
+    Book a Free Discovery Call
+  </button>
+</div>
+
       </div>
 
       <form

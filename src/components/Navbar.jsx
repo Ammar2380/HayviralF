@@ -41,47 +41,51 @@ export default function Navbar() {
 
   return (
     <header className="w-full fixed top-0 z-50 shadow-lg bg-[#00303C]">
-      <div className="flex items-center justify-between  px-6 md:px-12 py-4">
-        {/* Logo */}
-        <div>
-          <img src={logo} alt="Logo" className="h-10" />
-        </div>
+     <div className="flex items-center justify-between px-6 md:px-12 py-4">
+  {/* Left: Logo */}
+  <div className="flex-shrink-0">
+    <img src={logo} alt="Logo" className="h-10" />
+  </div>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center  gap-8 text-sm font-outfit text-white">
-          {sections.map((s) => (
-            <button
-              key={s.id}
-              onClick={() => handleNavClick(s.id)}
-              className={`relative px-1 transition-all duration-300 md:right-70
-                before:absolute before:bottom-0 before:left-0 before:w-0 
-                before:h-0.5 before:bg-[#C6FD07] before:transition-all before:duration-300 
-                hover:before:w-full`}
-            >
-              {s.label}
-              <span
-                className={`absolute left-0 bottom-[-3px]  h-[2px] bg-[#00303C] transition-all duration-300 ${
-                  active === s.id ? "w-full" : "w-0"
-                }`}
-              />
-            </button>
-          ))}
-          <button
-            onClick={() => handleNavClick("contact")}
-            className="bg-[#C6FD07] text-[#00303C] px-4 py-1.5 rounded-full font-semibold shadow-md hover:scale-105 transition-transform text-sm"
-          >
-            Contact Us
-          </button>
-        </nav>
+  {/* Center: Nav links */}
+  <nav className="hidden md:flex flex-1 justify-center gap-8 text-sm font-outfit text-white">
+    {sections.map((s) => (
+      <button
+        key={s.id}
+        onClick={() => handleNavClick(s.id)}
+        className={`relative px-1 transition-all duration-300
+          before:absolute before:bottom-0 before:left-0 before:w-0 
+          before:h-0.5 before:bg-[#C6FD07] before:transition-all before:duration-300 
+          hover:before:w-full`}
+      >
+        {s.label}
+        <span
+          className={`absolute left-0 bottom-[-3px] h-[2px] bg-[#00303C] transition-all duration-300 ${
+            active === s.id ? "w-full" : "w-0"
+          }`}
+        />
+      </button>
+    ))}
+  </nav>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          onClick={() => setOpen((s) => !s)}
-          className="md:hidden text-white text-2xl p-2 rounded-md focus:outline-none"
-        >
-          {open ? "✕" : "☰"}
-        </button>
-      </div>
+  {/* Right: Contact */}
+  <div className="hidden md:flex">
+    <button
+      onClick={() => handleNavClick("contact")}
+      className="bg-[#C6FD07] text-[#00303C] px-4 py-1.5 rounded-full font-semibold shadow-md hover:scale-105 transition-transform text-sm"
+    >
+      Contact Us
+    </button>
+  </div>
+
+  {/* Mobile Menu Toggle */}
+  <button
+    onClick={() => setOpen((s) => !s)}
+    className="md:hidden text-white text-2xl p-2 rounded-md focus:outline-none"
+  >
+    {open ? "✕" : "☰"}
+  </button>
+</div>
 
       {/* Mobile Menu */}
       <AnimatePresence>

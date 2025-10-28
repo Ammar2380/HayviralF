@@ -1,4 +1,3 @@
-import { section } from 'framer-motion/client'
 import React from 'react'
 import logo from "./navlogo.png";
 import img5 from './calendly.png'
@@ -7,75 +6,54 @@ import { FaXTwitter } from "react-icons/fa6"; // official X (Twitter) logo
 
 const Footer = () => {
   return (
-    <div className='h-90 w-full  border-t-1  border-[#C6FD07] md:flex  '>
-     <div className="h-90  w-auto md:w-134  bg-[#00303C] md:border-r border-b border-[#C6FD07] flex justify-center items-center">
-  <div className="flex flex-col items-start text-left px-6 space-y-4">
-    {/* Logo */}
-    <img src={logo} alt="HayViral Logo" className="w-28 mb-2" />
-
-    {/* Heading */}
-    <h1 className="text-xl font-semibold text-white">
-      Book a Free Call For Consultation
-    </h1>
-
-    {/* Description */}
-    <p className="text-sm text-gray-300 font-light max-w-xs">
-      Experienced team delivering exceptional digital solutions tailored to your brand.
-    </p>
-
-    {/* Button */}
-    <button className="mt-4 border border-[#00303C] bg-[#C6FD07] px-6 py-2 rounded-full font-semibold flex items-center gap-3 shadow-lg text-[#00303C] hover:scale-105 transition">
-      Contact Us
-      <img className="h-5" src={img5} alt="call-icon" />
-    </button>
-  </div>
-</div>
-
+    <div className='w-full border-t border-[#C6FD07] md:flex flex-col md:flex-row'>
       
-      <div className='flex flex-col '>
-      <div className="md:h-140 h-auto md:py-0 py-10 w-auto md:w-200 bg-[#00303C] border-b border-[#C6FD07] flex flex-col justify-center items-center space-y-4">
-  {/* Heading */}
-  <h2 className="text-white text-2xl font-semibold">Our Social Handles</h2>
+      {/* Left Section: 1/3 width */}
+      <div className="bg-[#00303C] flex justify-center items-center md:w-1/3 w-full p-6 border-b md:border-b-0 md:border-r border-[#C6FD07]">
+        <div className="flex flex-col items-start space-y-4">
+          <img src={logo} alt="HayViral Logo" className="w-28 mb-2" />
+          <h1 className="text-xl font-semibold text-white">
+            Book a Free Call For Consultation
+          </h1>
+          <p className="text-sm text-gray-300 font-light max-w-xs">
+            Experienced team delivering exceptional digital solutions tailored to your brand.
+          </p>
+          <button className="mt-4 border bg-[#C6FD07] px-6 py-2 rounded-full font-semibold flex items-center gap-3 shadow-lg text-[#00303C] hover:scale-105 transition">
+            Contact Us
+            <img className="h-5" src={img5} alt="call-icon" />
+          </button>
+        </div>
+      </div>
 
-  {/* Icons */}
-  <div className="flex gap-6 text-2xl ">
-<span className='border-1 border-[#C6FD07] h-11  w-11 rounded-lg justify-center flex items-center'>
+      {/* Right Section: 2/3 width */}
+      <div className="bg-[#00303C] flex flex-col w-full md:w-2/3">
+        
+        {/* Social Handles */}
+        <div className="flex flex-col justify-center items-center py-10 border-b border-[#C6FD07] space-y-4">
+          <h2 className="text-white text-2xl font-semibold">Our Social Handles</h2>
+          <div className="flex gap-6 text-2xl">
+            <a href="https://linkedin.com/in/ajaygraphicdesigner" target="_blank" rel="noreferrer" className="border border-[#C6FD07] h-11 w-11 flex justify-center items-center rounded-lg text-white hover:text-[#0A66C2]">
+              <FaLinkedin />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="border border-[#C6FD07] h-11 w-11 flex justify-center items-center rounded-lg text-white hover:text-[#1a1717]">
+              <FaXTwitter />
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="border border-[#C6FD07] h-11 w-11 flex justify-center items-center rounded-lg text-white hover:text-[#E4405F]">
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
 
-   <a 
-  href="https://linkedin.com/in/ajaygraphicdesigner" 
-  target="_blank" 
-  rel="noreferrer"
->
-  <FaLinkedin className="text-white hover:text-[#0A66C2] rounded-lg " />
-</a>
-
-</span>
-<span className='border-1 border-[#C6FD07] h-11  w-11 rounded-lg justify-center flex items-center'>
-
-    <a href="https://twitter.com" target="_blank" rel="noreferrer">
-      <FaXTwitter className="text-white hover:text-[#1a1717] rounded-lg " />
-    </a>
-</span>
-<span className='border-1 border-[#C6FD07]  h-11  w-11 rounded-lg justify-center flex items-center'>
-
-    <a href="https://instagram.com" target="_blank" rel="noreferrer">
-      <FaInstagram className="text-white hover:text-[#E4405F]  rounded-lg" />
-    </a>
-</span>
-
-  </div>
+        {/* Bottom */}
+       <div className="flex justify-between items-center h-12 md:h-16 w-full px-6">
+  <span className="text-white text-sm font-semibold">HayViral Agency</span>
+  <span className="text-white text-sm font-semibold">@2025, All RIGHTS RESERVED</span>
 </div>
 
-     <div className=" h-10 md:h-50 w-auto md:w-200 bg-[#00303C] flex justify-center items-center">
-  <p className="text-white text-sm flex gap-14 font-semibold md:gap-110">
-    <span>HayViral Agency</span>
-    <span>@2025, All RIGHTS RESERVED</span>
-  </p>
-</div>
 
       </div>
     </div>
   )
 }
 
-export default Footer
+export default Footer;

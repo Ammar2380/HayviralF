@@ -1,24 +1,24 @@
-
-
 import { DynamicFrameLayout } from "./dynamic-frame-layout"
-import bg from './test_bg.png'
-
+import bg from './test_bg.jpg'
+import vedio1 from './vediochek (1).mp4'
+import vedio2 from './vediochek (2).mp4'
+import vedio3 from './vediochek (3).mp4'
 const demoFrames = [
   {
     id: 1,
-    video: "https://static.cdn-luma.com/files/981e483f71aa764b/Company%20Thing%20Exported.mp4",
+    video: vedio1,
     defaultPos: { x: 0, y: 0, w: 4, h: 4 },
     mediaSize: 1,
   },
   {
     id: 2,
-    video: "https://static.cdn-luma.com/files/58ab7363888153e3/WebGL%20Exported%20(1).mp4",
+    video: vedio2,
     defaultPos: { x: 4, y: 0, w: 4, h: 4 },
     mediaSize: 1,
   },
   {
     id: 3,
-    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Jitter%20Exported%20Poster.mp4",
+    video: vedio3,
     defaultPos: { x: 8, y: 0, w: 4, h: 4 },
     mediaSize: 1,
   },
@@ -63,13 +63,15 @@ const demoFrames = [
 export default function DemoPage() {
   return (
     <>
-    <div className="md:h-230  w-full p-5 md:p-10   "  style={{
-                backgroundImage: `url(${bg})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                
-              }}>
-<div>
+      <div
+        className="md:h-230 w-full p-5 md:p-10"
+        style={{
+          backgroundImage: `url(${bg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div>
   <div className="text-center mb-10 md:mb-16 space-y-4 ">
         <div className="text-center flex justify-center items-center  ">
 
@@ -84,15 +86,37 @@ export default function DemoPage() {
         </p>
       </div>
 </div>
-    <div className=" h-100 md:h-screen w-full bg-[#303030] scroll-mt-72  p-1 rounded-xl scroll-22 "  id="portfolio"  >
-      <DynamicFrameLayout 
-        frames={demoFrames} 
-        className="w-full h-full" 
-        hoverSize={6}
-        gapSize={3}
-        />
-    </div>
+
+        {/* 🎥 Video Section */}
+        <div className="h-86 md:h-screen w-full bg-[#303030] p-1 rounded-xl" id="portfolio">
+          {/* Mobile Scrollable Video Slider */}
+          <div className="block md:hidden overflow-x-auto whitespace-nowrap no-scrollbar">
+            <div className="flex space-x-4">
+              {demoFrames.map((frame) => (
+                <video
+                  key={frame.id}
+                  src={frame.video}
+                  className="w-70 h-84 object-cover rounded-xl inline-block"
+                  autoPlay
+                  loop
+                  // muted
+                  controls
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop Grid Layout */}
+          <div className="hidden md:block w-full h-full">
+            <DynamicFrameLayout
+              frames={demoFrames}
+              className="w-full h-full"
+              hoverSize={6}
+              gapSize={3}
+            />
+          </div>
         </div>
-        </>
+      </div>
+    </>
   )
 }

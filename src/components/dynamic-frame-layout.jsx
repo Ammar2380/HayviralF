@@ -1,9 +1,72 @@
-
-
 import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
-import bg from './test_bg.png'
-function FrameComponent({
+import { Play, X } from "lucide-react"
+
+function MobileCard({ video, thumbnail, title, category, onPlayClick }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5 }}
+      className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl"
+    >
+      {/* Thumbnail/Video Preview */}
+      <div className="w-full h-full">
+        {thumbnail ? (
+          <img
+            src={thumbnail}
+            alt={title || "Portfolio item"}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <video
+            src={video}
+            className="w-full h-full object-cover"
+            muted
+            playsInline
+          />
+        )}
+      </div>
+      
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+      
+      {/* Content */}
+      <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+        {category && (
+          <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium mb-3">
+            {category}
+          </span>
+        )}
+        {title && (
+          <h3 className="text-white text-2xl font-bold mb-4">
+            {title}
+          </h3>
+        )}
+        <button
+          onClick={onPlayClick}
+          className="flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all active:scale-95"
+        >
+          <Play className="w-5 h-5" fill="black" />
+          Watch Project
+        </button>
+      </div>
+
+      {/* Center Play button */}
+      <button
+        onClick={onPlayClick}
+        className="absolute inset-0 flex items-center justify-center group"
+      >
+        <div className="w-20 h-20 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl group-active:scale-95 transition-transform">
+          <Play className="w-10 h-10 text-black ml-1" fill="black" />
+        </div>
+      </button>
+    </motion.div>
+  )
+}
+
+function DesktopFrame({
   video,
   width,
   height,
@@ -34,7 +97,6 @@ function FrameComponent({
         width,
         height,
         transition: "width 0.3s ease-in-out, height 0.3s ease-in-out",
-       
       }}
     >
       <div className="relative w-full h-full overflow-hidden rounded-xl">
@@ -69,8 +131,8 @@ function FrameComponent({
           </div>
         </div>
 
-        {showFrame && (
-          <div className="absolute inset-0" style={{ zIndex: 2 }}>
+        {showFrame && corner && (
+          <div className="absolute inset-0" style={{ zIndex: 2, pointerEvents: 'none' }}>
             <div
               className="absolute top-0 left-0 w-16 h-16 bg-contain bg-no-repeat"
               style={{ backgroundImage: `url(${corner})` }}
@@ -88,43 +150,89 @@ function FrameComponent({
               style={{ backgroundImage: `url(${corner})`, transform: "scale(-1, -1)" }}
             />
 
-            <div
-              className="absolute top-0 left-16 right-16 h-16"
-              style={{
-                backgroundImage: `url(${edgeHorizontal})`,
-                backgroundSize: "auto 64px",
-                backgroundRepeat: "repeat-x",
-              }}
-            />
-            <div
-              className="absolute bottom-0 left-16 right-16 h-16"
-              style={{
-                backgroundImage: `url(${edgeHorizontal})`,
-                backgroundSize: "auto 64px",
-                backgroundRepeat: "repeat-x",
-                transform: "rotate(180deg)",
-              }}
-            />
-            <div
-              className="absolute left-0 top-16 bottom-16 w-16"
-              style={{
-                backgroundImage: `url(${edgeVertical})`,
-                backgroundSize: "64px auto",
-                backgroundRepeat: "repeat-y",
-              }}
-            />
-            <div
-              className="absolute right-0 top-16 bottom-16 w-16"
-              style={{
-                backgroundImage: `url(${edgeVertical})`,
-                backgroundSize: "64px auto",
-                backgroundRepeat: "repeat-y",
-                transform: "scaleX(-1)",
-              }}
-            />
+            {edgeHorizontal && (
+              <>
+                <div
+                  className="absolute top-0 left-16 right-16 h-16"
+                  style={{
+                    backgroundImage: `url(${edgeHorizontal})`,
+                    backgroundSize: "auto 64px",
+                    backgroundRepeat: "repeat-x",
+                  }}
+                />
+                <div
+                  className="absolute bottom-0 left-16 right-16 h-16"
+                  style={{
+                    backgroundImage: `url(${edgeHorizontal})`,
+                    backgroundSize: "auto 64px",
+                    backgroundRepeat: "repeat-x",
+                    transform: "rotate(180deg)",
+                  }}
+                />
+              </>
+            )}
+
+            {edgeVertical && (
+              <>
+                <div
+                  className="absolute left-0 top-16 bottom-16 w-16"
+                  style={{
+                    backgroundImage: `url(${edgeVertical})`,
+                    backgroundSize: "64px auto",
+                    backgroundRepeat: "repeat-y",
+                  }}
+                />
+                <div
+                  className="absolute right-0 top-16 bottom-16 w-16"
+                  style={{
+                    backgroundImage: `url(${edgeVertical})`,
+                    backgroundSize: "64px auto",
+                    backgroundRepeat: "repeat-y",
+                    transform: "scaleX(-1)",
+                  }}
+                />
+              </>
+            )}
           </div>
         )}
       </div>
+    </div>
+  )
+}
+
+function FullscreenVideoPlayer({ video, onClose }) {
+  const videoRef = useRef(null)
+
+  useEffect(() => {
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('landscape').catch(() => {})
+    }
+
+    videoRef.current?.play()
+
+    return () => {
+      if (screen.orientation && screen.orientation.unlock) {
+        screen.orientation.unlock()
+      }
+    }
+  }, [])
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black flex items-center justify-center">
+      <video
+        ref={videoRef}
+        src={video}
+        className="w-full h-full object-contain"
+        controls
+        autoPlay
+        playsInline
+      />
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 w-12 h-12 bg-white/10 backdrop-blur-md hover:bg-white/20 rounded-full flex items-center justify-center transition-all z-10 active:scale-95"
+      >
+        <X className="w-6 h-6 text-white" strokeWidth={2.5} />
+      </button>
     </div>
   )
 }
@@ -137,6 +245,60 @@ export function DynamicFrameLayout({
   gapSize = 4
 }) {
   const [hovered, setHovered] = useState(null)
+  const [fullscreenVideo, setFullscreenVideo] = useState(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  const handlePlayClick = (video) => {
+    setFullscreenVideo(video)
+  }
+
+  const handleCloseFullscreen = () => {
+    setFullscreenVideo(null)
+  }
+
+ 
+
+  // Mobile Layout - Vertical scrolling cards
+if (isMobile) {
+  return (
+    <>
+      <div className={`w-full px-4 py-8 space-y-6 ${className}`}>
+        {frames.map((frame) => (
+          <MobileCard   key={frame.id}
+              video={frame.video}
+              thumbnail={frame.thumbnail}
+              title={frame.title}
+              category={frame.category}
+              onPlayClick={() => handlePlayClick(frame.video)} />
+        ))}
+      </div>
+
+      {fullscreenVideo && (
+        <FullscreenVideoPlayer
+          video={fullscreenVideo}
+          onClose={handleCloseFullscreen}
+        />
+      )}
+    </>
+  )
+}
+
+  // const handlePlayClick = (video) => {
+  //   setFullscreenVideo(video)
+  // }
+
+  // const handleCloseFullscreen = () => {
+  //   setFullscreenVideo(null)
+  // }
 
   const getRowSizes = () => {
     if (hovered === null) return "4fr 4fr 4fr"
@@ -158,6 +320,34 @@ export function DynamicFrameLayout({
     return `${vertical} ${horizontal}`
   }
 
+  // Mobile Layout
+  if (isMobile) {
+    return (
+      <>
+        <div className={`w-full px-4 py-8 space-y-6 ${className}`}>
+          {frames.map((frame) => (
+            <MobileCard
+              key={frame.id}
+              video={frame.video}
+              thumbnail={frame.thumbnail}
+              title={frame.title}
+              category={frame.category}
+              onPlayClick={() => handlePlayClick(frame.video)}
+            />
+          ))}
+        </div>
+
+        {fullscreenVideo && (
+          <FullscreenVideoPlayer
+            video={fullscreenVideo}
+            onClose={handleCloseFullscreen}
+          />
+        )}
+      </>
+    )
+  }
+
+  // Desktop Layout - 3x3 Grid
   return (
     <div
       className={`relative w-full h-full ${className}`}
@@ -185,7 +375,7 @@ export function DynamicFrameLayout({
             onMouseEnter={() => setHovered({ row, col })}
             onMouseLeave={() => setHovered(null)}
           >
-            <FrameComponent
+            <DesktopFrame
               video={frame.video}
               width="100%"
               height="100%"
@@ -193,9 +383,9 @@ export function DynamicFrameLayout({
               corner={frame.corner}
               edgeHorizontal={frame.edgeHorizontal}
               edgeVertical={frame.edgeVertical}
-              mediaSize={frame.mediaSize}
-              borderThickness={frame.borderThickness}
-              borderSize={frame.borderSize}
+              mediaSize={frame.mediaSize || 1}
+              borderThickness={frame.borderThickness || 10}
+              borderSize={frame.borderSize || 90}
               showFrame={showFrames}
               isHovered={hovered?.row === row && hovered?.col === col}
             />

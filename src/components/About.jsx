@@ -4,19 +4,19 @@ import arrow from './Arrow.png'
 
 export default function About() {
   return (
-    <section id="about" className="bg-[#00303C] text-white  py-20 px-6 md:px-20">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2  md:gap-12 items-start  md:p-10">
+    <section id="about" className="bg-[#00303C] text-white  py-10 h-auto px-6 md:px-20">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2  md:gap-19 items-start  md:p-10">
         
         {/* LEFT */}
-        <div className="flex flex-col gap-10 space-y-4">
+        <div className="flex  flex-col gap-10 space-y-4">
           
           {/* About + Arrow */}
-          <div className="flex items-start gap-10 h-10">
-            <h2 className="text-7xl md:text-8xl  font-outfit font-extrabold text-[#C6FD07] leading-none">
+          <div className="flex items-start gap-11 h-10">
+            <h2 className="  text-7xl md:text-8xl  font-outfit font-extrabold text-[#C6FD07] leading-none">
               About
             </h2>
             <div className="h-16 w-16 md:h-20 font-outfit md:w-20 rounded-full  border-[#C6FD07] flex items-center justify-center mt-4">
-              <img src={arrow} alt="Arrow" className="h-13 md:h-16 mb-4" />
+              <img src={arrow} alt="Arrow" className="h-13 md:w-21 md:h-21 mb-4" />
             </div>
           </div>
 
@@ -69,15 +69,16 @@ export default function About() {
 
         <span className='h-1 w-80 md:hidden scale-y-25 bg-[#C6FD07] mb-8'></span>
         {/* RIGHT */}
-        <div className=" space-y-3 md:space-y-4">
-          <h2 className="text-3xl   md:text-4xl font-extrabold leading-tight">
-            Helping Small Businesses Go Big Online
+        <div className="  space-y-3 md:space-y-2  w-auto">
+          <h2 className="text-3xl   md:text-3xl font-extrabold leading-tight">
+           Helping entrepreneurs & their businesses Go Big Online 
+
           </h2>
-          <h3 className="text-sm md:text-xl leading-tight font-medium text-gray-200">
-            We’re your creative partner in building an online presence that doesn’t just look good it grows your business.
+          <h3 className="text-5sm md:text-2xl leading-tight font-medium text-gray-200">
+            We’re your creative partner in building an online presence that doesn’t just look good it grows you online.
           </h3>
-          <p className="text-xs md:text-sm  text-gray-300 leading-5">
-            At HayViral, we understand the unique challenges small businesses face in today’s digital-first world. That’s why we’re committed to providing affordable, customized solutions that make a real difference. From eye-catching websites to strategies that drive traffic and sales, our mission is simple: help you compete and win online.
+          <p className="text-5xs md:text-base w-auto text-gray-300 leading-5">
+           At HayViral, we understand the unique challenges businesses face in today’s digital first world. That’s why we’re committed to providing affordable, customized solutions that make a real difference. From eye catching websites to strategies that drive traffic and sales, our mission is simple: help you compete and win online.
           </p>
         </div>
       </div>

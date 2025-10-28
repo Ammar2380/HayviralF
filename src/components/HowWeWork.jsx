@@ -30,10 +30,17 @@ export default function HowWeWork() {
 
     </div>
   
-  <div className=" h-fit w-auto md:w-250 bg-[#00303C] flex  items-center flex-col md:flex-row mt-10">
+  <div className=" h-fit w-auto lg:w-250 bg-[#00303C] flex  items-center flex-col md:flex-row mt-10 ">
 
     <div className="flex flex-row md:flex-col md:gap-0 gap-8 items-center ">
-      <span className=" "><img className="  m-2 h-15 md:h-30" src={img} alt=""  /></span>
+    <span>
+  <img 
+    src={img} 
+    alt=""  
+    className="m-2 w-12 h-auto md:w-20 lg:w-28" 
+  />
+</span>
+
       
       <span className=" w-auto md:w-30 h-30 md:h-40 bg-[#00303C]  md:items-center md:justify-center  m-2 flex flex-col">
         <h1 className="font-bold text-[#C6FD07] text-5xl relative md:right-8">01</h1>
@@ -51,7 +58,7 @@ export default function HowWeWork() {
         <h3 className="font-bold text-[#ffff] relative md:right-8.5 text-2xl">Plan</h3>
         <p className=" text-[#ffff] leading-tight text-sm font-extralight md:w-auto w-60 ">We craft a digital strategy tailored to your needs.</p>
       </span>
-        <span className="h-full flex justify-center items-center"><img className=" m-2 h-15 md:h-30  " src={img1} alt=""  /></span>
+        <span className="h-full flex justify-center items-center"><img className=" m-2 w-12 h-auto md:w-20 lg:w-28  " src={img1} alt=""  /></span>
     </div>
     <div className="flex flex-col">
       <img src={vector1} alt="" className="max-sm:hidden p-2" />
@@ -59,7 +66,7 @@ export default function HowWeWork() {
 
 
     <div className="flex flex-row md:flex-col md:gap-0 gap-8 items-center "> 
-      <span className=""><img className="  m-2 h-15 md:h-30" src={img2} alt=""  /></span>
+      <span className=""><img className="  m-2 w-12 h-auto md:w-20 lg:w-28" src={img2} alt=""  /></span>
   <span className=" w-auto md:w-30 h-30 md:h-40 bg-[#00303C]  md:items-center md:justify-center  m-2 flex flex-col">
         <h1 className="font-bold text-[#C6FD07] text-5xl relative md:right-9">03</h1>
         <h3 className="font-bold text-[#ffff] relative md:right-6.5 text-2xl">Create</h3>
@@ -77,7 +84,7 @@ export default function HowWeWork() {
         <h3 className="font-bold text-[#ffff] relative md:right-8 text-2xl">Grow</h3>
         <p className=" text-[#ffff] leading-tight text-sm font-extralight ">We track, optimize, and scale what works.</p>
       </span>
-       <span className="h-full flex justify-center items-center"><img className="  m-2 h-15 md:h-30" src={img3} alt=""  /></span>
+       <span className="h-full flex justify-center items-center"><img className="  m-2 w-12 h-auto md:w-20 lg:w-28" src={img3} alt=""  /></span>
     </div>
 
   </div>
